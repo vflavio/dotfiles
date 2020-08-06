@@ -1,0 +1,475 @@
+###########################################################################
+###########################################################################
+################       Start of all the settings          #################
+###########################################################################
+###########################################################################
+
+# KEY DEFINITIONS TO REMEMBER
+set mod1 ALT key
+set $mod Mod4
+
+
+
+
+
+
+################### STOPPING A PROGRAM #########################
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+
+
+
+
+################### MOVING AROUND ##############################
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+
+
+################### TILING PARAMETERS ##############################
+
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+q focus parent
+
+# focus the child container
+bindsym $mod+c focus child
+
+
+
+
+################### RELOAD AND EXIT #####################
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -y 'Yes, exit i3' 'i3-msg exit'
+
+
+
+
+################### RESIZE ##############################
+
+
+# resize window
+
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 100 px or 100 ppt
+        bindsym k resize grow height 100 px or 100 ppt
+        bindsym l resize shrink height 100 px or 100 ppt
+        bindsym semicolon resize grow width 100 px or 100 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+
+
+################### FONTS ######################
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# choose your font
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# font -misc-fixed-bold-r-normal-*-15-140-75-75-c-90-iso10646-1
+# font pango:DejaVu Sans Mono 12
+# font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
+# font pango:Droid Sans Mono Dotted 12
+# font pango:hermit 12
+# font pango:Inconsolata 15
+# font pango:monospace 12
+# font pango:SourceCodePro-SemiBold 11
+ font pango:Source Code Pro for Powerline, FontAwesome Regular, Icons 9
+# font pango:Terminus 14px
+# font pango:UbuntuMono-regular 12
+# from ttf-chromeos-fonts
+# font pango:Cousine 13
+# font pango:Arimo 11
+# font pango:Sans 13
+# font pango:Noto Mono Regular 13
+# font pango:DroidSansMono 13
+# font pango:Noto Mono Regular 13
+
+
+
+
+################### MENU ######################
+
+# start rofi
+bindsym $mod+d exec rofi -show drun -show-icons -theme ~/.config/rofi/themes/drun.rasi
+
+# Start dmenu
+bindsym $mod+mod1+d exec dmenu_run -fn 'NotoMonoRegular:bold:pixelsize=18'
+
+
+
+
+################### workspaces ######################
+
+
+set $ws1  "(Opera/Chrome)space"
+set $ws2  "Studyspace"
+set $ws3  "Programspace"
+set $ws4  "Gamespace"
+set $ws5  "Discordspace"
+set $ws6  "Terminalzone"
+set $ws7  "Arduinozone"
+set $ws8  "(Emacs/Vim)zone"
+set $ws9  "Workzone"
+set $ws10 "Musiczone"
+
+# switch to workspaces
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10 
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+
+
+
+################### MOUSE ######################
+
+
+# mouse settings
+# The middle button and a modifer over any part of the window kills the window
+ bindsym --whole-window $mod+button2 kill
+
+# The right button toggles floating
+ bindsym $mod+button3 floating toggle
+
+# The side buttons move the window around
+ bindsym button9 move left
+ bindsym button8 move right
+
+
+
+
+################### FLOATING OR TILED ######################
+
+
+#floating enabled from some programs - find with xprop
+#for_window [class="Gnome-disks"] floating enable
+for_window [class="^Skype$"] floating enable
+for_window [class="^Gnome-font-viewer$"] floating enable
+for_window [class="^Gpick$"] floating enable
+#for_window [class="^Vlc$"] floating enable
+#for_window [class="^Spotify$"] floating enable workspace 10
+#for_window [instance="gimp"] floating enable
+for_window [window_role="^gimp-toolbox-color-dialog$"] floating enable
+#for_window [instance="variety"] floating enable
+#for_window [class="Gnome-system-monitor"] floating enable
+#for_window [class="Mate-system-monitor"] floating enable
+#for_window [class="Xfce4-taskmanager"] floating enable
+#for_window [class="Brasero"] floating enable
+#for_window [class="Xfburn"] floating enable
+for_window [class="Xfce4-appfinder"] floating enable
+#for_window [class="Wine"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="^Preferences$"] floating enable
+for_window [window_role="setup"] floating enable
+for_window [title="^Terminator Preferences$"] floating enable
+#for_window [class="Font-manager"] floating enable
+for_window [class="System-config-printer.py"] floating enable
+for_window [class="Nitrogen"] floating enable
+for_window [title="Copying"] floating enable  
+for_window [title="Deleting"] floating enable  
+for_window [title="Moving"] floating enable
+for_window [class="Unetbootin.elf"] floating enable
+for_window [class="Galculator"] floating enable
+for_window [class="Usb-creator-gtk"] floating enable
+for_window [instance="script-fu"] border normal
+for_window [class="Imagewriter"] floating enable
+#for_window [class="MintUpdate.py"] floating enable
+#for_window [class="Bleachbit"] floating enable
+#for_window [class="Hexchat"] floating disable
+for_window [class="Xfce4-settings-manager"] floating disable
+for_window [class="Gnome-control-center"] floating disable
+for_window [class="Gnome-terminal"] focus
+
+#Popups during fullscreen mode
+popup_during_fullscreen smart
+
+
+
+
+
+################### MODE_SYSTEM ######################
+
+
+bindsym $mod+Escape mode "$mode_system"
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym e exec i3-msg exit
+    bindsym s exec systemctl suspend
+    bindsym h exec systemctl hibernate
+    bindsym r exec systemctl reboot
+    bindsym Shift+s exec systemctl poweroff
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+
+
+################### AUDIO/BRIGHTNESS ######################
+
+
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '5%+'"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '5%-'"
+bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +10% # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%- # decrease screen brightness
+
+
+
+
+################### BAR/BORDER ######################
+
+
+# bar toggle, hide or show 
+bindsym $mod+b bar mode toggle
+
+#changing border style
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+focus_follows_mouse no
+focus_on_window_activation smart
+
+
+
+
+################### BAR APPEARANCE ######################
+
+
+# polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+
+# Flash Focus
+exec_always --no-startup-id flashfocus
+bindsym $mod+n exec --no-startup-id flash_window
+
+
+# Set BG
+exec_always feh --bg-fill ~/Pictures/*
+
+
+#colors
+#set $gy #787878
+#set $rd #e80e0e
+#set $be #0025de
+#set $gn #29de00
+#set $we #ffffff
+#set $bk #000000
+#set $yw #fffb00
+#set $oe #ffa600
+
+
+# Start i3blocks to display a workspace bar
+#bar
+#{
+#    position top
+#    status_command i3blocks
+#    i3bar_command i3bar
+#	  font pango: SpaceMono Nerd Font Regular 11
+#	  colors
+#	  {
+#	    #                     border  backgr. text
+#           focused_workspace       $gy     $bk     $rd
+#           active_workspace        $gy     $be     $rd
+#           inactive_workspace      $gy     $gy     $oe
+#           urgent_workspace        $gy     $we     $be
+#          }
+#}
+
+
+
+
+###########################################################################
+###################  I 3  G A P S  N E X T   ##############################
+###########################################################################
+
+
+for_window [class="^.*"] border none
+gaps inner 10 
+gaps outer 0
+smart_gaps on
+smart_borders on
+
+
+
+
+###########################################################################
+###################       I3 GAPS CHANGE     ##############################
+###########################################################################
+
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+
+
+###########################################################################
+###################       C O M P T O N      ##############################
+###########################################################################
+
+
+# compton
+exec --no-startup-id compton
+
+
+
+
+###########################################################
+####################### Terminal ##########################
+###########################################################
+
+#terminal
+bindsym $mod+Return exec urxvt;focus
+bindsym control+mod1+t exec xfce4-terminal; focus
+
+
+#System monitor
+bindsym control+Shift+Escape exec gnome-system-monitor;focus
+
+
+#settings
+bindsym control+mod1+n exec xfce4-settings-manager
+
+
+#file managers
+bindsym $mod+mod1+Return exec thunar
+
+
+
